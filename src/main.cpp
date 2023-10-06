@@ -1,27 +1,36 @@
-#include "code.hpp"
-#include <iostream>
+#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/System/Clock.hpp>
+#include <SFML/Window/Event.hpp>
 
-int main()
-{
+#include <imgui-SFML.h>
+#include <imgui.h>
 
-    std::vector<std::vector<bool>> t = {
-        {0, 1, 1, 1, 1, 0, 0, 0},
-        {1, 0, 1, 1, 0, 1, 0, 0},
-        {1, 1, 0, 1, 0, 0, 1, 0},
-        {1, 1, 1, 0, 0, 0, 0, 1},
-    };
+int main() {
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "ImGui + SFML = <3");
+    window.setFramerateLimit(60);
+    ImGui::SFML::Init(window);
 
-    std::vector<bool> word = {0, 0, 0, 1, 1, 1, 0, 0};
-    std::vector<int> p = {};
+    sf::Clock deltaClock;
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            ImGui::SFML::ProcessEvent(event);
 
-    Code a(t, word);
+            if (event.type == sf::Event::Closed) {
+                window.close();
+            }
+        }
 
-    while (!a.containsDuplicateState() && a.sumCheckNodeStates() != 0)
-    {
-        a.updateWord("u=s");
-        a.debug();
+        ImGui::SFML::Update(window, deltaClock.restart());
+
+        ImGui::ShowDemoWindow();
+
+        window.clear();
+        ImGui::SFML::Render(window);
+        window.display();
     }
-    a.debug();
+
+    ImGui::SFML::Shutdown();
 
     return 0;
 }

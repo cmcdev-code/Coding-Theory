@@ -1,0 +1,21 @@
+# ninja log v5
+2	46	7183151163791787	imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-mkdir	859bec378e0989ca
+2	46	7183151163791787	C:/Users/colli/Code/Coding Theory/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-mkdir	859bec378e0989ca
+46	1257	7183151175895733	imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-download	b75f2d995cd4cbdb
+46	1257	7183151175895733	C:/Users/colli/Code/Coding Theory/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-download	b75f2d995cd4cbdb
+1257	1370	0	imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-update	c3f0699474de9815
+1257	1370	0	C:/Users/colli/Code/Coding Theory/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-update	c3f0699474de9815
+1370	1414	7183151177468794	imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-patch	ac913b44d6680ef4
+1370	1414	7183151177468794	C:/Users/colli/Code/Coding Theory/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-patch	ac913b44d6680ef4
+1414	1460	7183151177925358	imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-configure	d983a10e162f3d20
+1414	1460	7183151177925358	C:/Users/colli/Code/Coding Theory/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-configure	d983a10e162f3d20
+1460	1504	7183151178366330	imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-build	885b36bdfc87395a
+1460	1504	7183151178366330	C:/Users/colli/Code/Coding Theory/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-build	885b36bdfc87395a
+1504	1547	7183151178793150	imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-install	2ebea2d12950e49e
+1504	1547	7183151178793150	C:/Users/colli/Code/Coding Theory/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-install	2ebea2d12950e49e
+1547	1591	7183151179233755	imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-test	c22c57510742bd3
+1547	1591	7183151179233755	C:/Users/colli/Code/Coding Theory/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-test	c22c57510742bd3
+1591	1652	7183151179848729	CMakeFiles/imgui-sfml-populate-complete	55803982c9e6b374
+1591	1652	7183151179848729	imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-done	55803982c9e6b374
+1591	1652	7183151179848729	C:/Users/colli/Code/Coding Theory/build/_deps/imgui-sfml-subbuild/CMakeFiles/imgui-sfml-populate-complete	55803982c9e6b374
+1591	1652	7183151179848729	C:/Users/colli/Code/Coding Theory/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-done	55803982c9e6b374
