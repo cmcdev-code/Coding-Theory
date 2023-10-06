@@ -4,30 +4,42 @@
 
 #include <imgui-SFML.h>
 #include <imgui.h>
+#include "application.hpp"
 
-int main() {
-    sf::RenderWindow window(sf::VideoMode(1280, 720), "ImGui + SFML = <3");
-    window.setFramerateLimit(60);
-    ImGui::SFML::Init(window);
+
+int main()
+{
+    std::vector<std::vector<bool>> t = { {1, 0, 1},
+                                         {1, 0, 1},
+                                         {1, 0, 1} };
+    std::vector<bool> word= {1,1,1};
+    Code c(t,word);
+    SfWindow win(c);
+    
+    
+    win.window.setFramerateLimit(60);
+    ImGui::SFML::Init(win.window);
 
     sf::Clock deltaClock;
-    while (window.isOpen()) {
+    while (win.window.isOpen())
+    {
         sf::Event event;
-        while (window.pollEvent(event)) {
+        while (win.window.pollEvent(event))
+        {
             ImGui::SFML::ProcessEvent(event);
 
-            if (event.type == sf::Event::Closed) {
-                window.close();
+            if (event.type == sf::Event::Closed)
+            {
+                win.window.close();
             }
         }
 
-        ImGui::SFML::Update(window, deltaClock.restart());
+        ImGui::SFML::Update(win.window, deltaClock.restart());
 
-        ImGui::ShowDemoWindow();
-
-        window.clear();
-        ImGui::SFML::Render(window);
-        window.display();
+        myApp::RenderUI(c);
+        win.window.clear();
+        ImGui::SFML::Render(win.window);
+        win.window.display();
     }
 
     ImGui::SFML::Shutdown();

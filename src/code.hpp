@@ -94,13 +94,13 @@ bool ShuntingYard(std::string str, int s, int u)
         if (type(result[i]) == 11 && i + 1 < result.size() && isdigit(result[i + 1]))
         {
             std::string numString = "";
-            while (i+1 < result.size() && isdigit(result[i+1]))
+            while (i + 1 < result.size() && isdigit(result[i + 1]))
             {
                 numString += (std::to_string(type(result[i])));
                 i += 1;
             }
             int a = std::stoi(numString);
-            a*=-1;
+            a *= -1;
             numbers.push(a);
             i += 1;
         }
@@ -188,6 +188,7 @@ bool ShuntingYard(std::string str, int s, int u)
 
     return false;
 }
+
 
 class Code
 {
@@ -305,9 +306,16 @@ public:
         return this->word;
     }
 
-    std::vector<int> getPreviousWord()
+    std::vector<int> getPreviousWord() const
     {
         return this->previousWord;
+    }
+
+    void operator=(const Code &c)
+    {
+        this->matrix = c.getMatrix();
+        this->word = c.getWord();
+        this->previousWord = c.getPreviousWord();
     }
 
 private:
