@@ -57,6 +57,15 @@
         "string": "cpp",
         "unordered_map": "cpp",
         "xhash": "cpp",
-        "xtree": "cpp"
-    }
+        "xtree": "cpp",
+        "fstream": "cpp",
+        "iomanip": "cpp",
+        "locale": "cpp",
+        "set": "cpp",
+        "xlocbuf": "cpp",
+        "xlocmes": "cpp",
+        "xlocmon": "cpp",
+        "xloctime": "cpp"
+    },
+    "cmake.configureOnOpen": false
 }

@@ -264,6 +264,15 @@ public:
         }
         return sum;
     }
+    int sumOfMatrix() const{
+        int sum=0;
+        for(auto & itr: this->matrix){
+            for(auto i: itr){
+                sum+=i;
+            }
+        }
+        return sum;
+    }
 
     bool containsDuplicateState() const
     {

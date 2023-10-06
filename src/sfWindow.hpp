@@ -14,16 +14,21 @@ public:
     sf::RenderWindow window;
     Code code;
     int shapeDimensions;
+    int spacing;
     float circleShapeAlignment;
     float squareShapeAlignment;
 
-    std::vector<sf::Shape> shapes;
+    std::vector<sf::RectangleShape> shapeR;
+    std::vector<sf::CircleShape> shapeC;
+
+    sf::VertexArray line;
 
     SfWindow()
     {
         this->window.create(sf::VideoMode(1280, 720), "Iterative Decoding");
         this->shapeDimensions = 20;
-        circleShapeAlignment = 20.0f;
+        this->circleShapeAlignment = 20.0f;
+        this->spacing = 3;
     }
     float getSquareShapeAlignment() const
     {
@@ -48,17 +53,29 @@ public:
         return this->shapeDimensions;
     }
 
-    int setShapeDim(int shapeDimensions)
+    void setShapeDim(int shapeDimensions)
     {
         this->shapeDimensions = shapeDimensions;
+        this->line.setPrimitiveType(sf::Lines);
     }
 
-    SfWindow(Code &code, int shapeDimensions = 20, float shapeAliment = 20.0f)
+    SfWindow(Code &code, int shapeDimensions = 20, float shapeAliment = 20.0f, int spacing = 3)
     {
         this->window.create(sf::VideoMode(1280, 720), "Iterative Decoding");
         this->code = code;
         this->shapeDimensions = shapeDimensions;
         this->circleShapeAlignment = circleShapeAlignment;
+        this->line.setPrimitiveType(sf::Lines);
+        this->spacing = spacing;
+    }
+    int getSpacing() const
+    {
+        return this->spacing;
+    }
+
+    void setSpacing(int spacing)
+    {
+        this->spacing = spacing;
     }
 
     void initializeShapes()
@@ -68,30 +85,30 @@ public:
 
         for (int i = 0; i < word.size(); i++)
         {
-            if (word.at(i))
-            {
-                sf::CircleShape shape(this->getShapeDim());
-                shape.setPosition(sf::Vector2f(this->getCircleShapeAlignment(), this->getShapeDim() * i));
-                shape.setFillColor(sf::Color::Green);
-                this->shapes.push_back(shape);
-            }
-            else if (!word.at(i))
-            {
-                sf::CircleShape shape(this->getShapeDim());
-                shape.setPosition(sf::Vector2f(this->getCircleShapeAlignment(), this->getShapeDim() * i));
-                shape.setFillColor(sf::Color::Red);
-                this->shapes.push_back(shape);
-            }
+            sf::CircleShape shape(this->getShapeDim());
+            shape.setPosition(sf::Vector2f(this->getCircleShapeAlignment(), this->getShapeDim() * this->getSpacing() * i + 30));
+            shape.setFillColor(word.at(i) ? sf::Color::Green : sf::Color::Red);
+            this->shapeC.push_back(shape);
         }
 
         std::vector<bool> stateOfCheckNodes = this->code.stateOfCheckNodes();
         for (int i = 0; i < stateOfCheckNodes.size(); i++)
         {
-            if (stateOfCheckNodes.at(i))
+            sf::RectangleShape shape(sf::Vector2f(this->getShapeDim(), this->getShapeDim()));
+            shape.setPosition(sf::Vector2f(this->getSquareShapeAlignment(), this->getShapeDim() * this->getSpacing() * i + 30));
+            shape.setFillColor(stateOfCheckNodes.at(i) ? sf::Color::Blue : sf::Color::Yellow);
+            shapeR.push_back(shape);
+        }
+
+        for (int i = 0; i < matrix.size(); i++ /*columns*/)
+        {
+            for (int j = 0; j < matrix.at(0).size(); j++ /*rows*/)
             {
-                sf::RectangleShape shape(sf::Vector2f(this->getShapeDim(), this->getShapeDim()));
-                shape.setPosition(sf::Vector2f(this->getSquareShapeAlignment(), this->getShapeDim() * i));
-                shape.setFillColor(sf::Color::Blue);
+                if (matrix.at(i).at(j))
+                {
+                    line.append(sf::Vertex(this->shapeR.at(i).getPosition(), this->shapeR.at(i).getFillColor()));
+                    line.append(sf::Vertex(this->shapeC.at(j).getPosition(), this->shapeC.at(j).getFillColor()));
+                }
             }
         }
     }
