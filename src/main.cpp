@@ -13,10 +13,10 @@ int main(){
 
     Code a(t,word );
     
-    a.debug();
+    //a.debug();
 
-    std::string f = "s=u+1";
-    std::cout<<ShuntingYard(  f,2,9);
+    std::string f = "s<u+1+10+10";
+    std::cout<<ShuntingYard(  f,100000+1+10+10,100000);
 
 
     return 0;
