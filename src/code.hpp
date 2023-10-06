@@ -189,16 +189,25 @@ bool ShuntingYard(std::string str, int s, int u)
     return false;
 }
 
-
 class Code
 {
 
 public:
-    Code() : matrix(3, std::vector<bool>(3, 0)), previousWord(0), word(matrix.at(0).size(), 0) {}
+    Code() : matrix(3, std::vector<bool>(3, 0)), previousWord(0), word(matrix.at(0).size(), 0) { whatFunction = "u>=s"; }
 
     Code(std::vector<std::vector<bool>> &matrix,
          std::vector<bool> &word,
-         std::vector<int> previousWord = {}) : matrix(matrix), word(word), previousWord(previousWord) {}
+         std::vector<int> previousWord = {}) : matrix(matrix), word(word), previousWord(previousWord) { whatFunction = "u>=s"; }
+
+    std::string getWordAsString() const
+    {
+        std::string wordAsString;
+        for (auto itr : this->word)
+        {
+            wordAsString += std::to_string(itr);
+        }
+        return wordAsString;
+    }
 
     void debug()
     {
@@ -216,7 +225,9 @@ public:
             std::cout << itr << " ";
         }
     }
-    void updateWord(std::string whatFunction)
+    std::string whatFunction;
+
+    void updateWord()
     {
         // First to find the neighbor check nodes that are 0
         std::vector<bool> checkNodesState = this->stateOfCheckNodes();
@@ -264,11 +275,14 @@ public:
         }
         return sum;
     }
-    int sumOfMatrix() const{
-        int sum=0;
-        for(auto & itr: this->matrix){
-            for(auto i: itr){
-                sum+=i;
+    int sumOfMatrix() const
+    {
+        int sum = 0;
+        for (auto &itr : this->matrix)
+        {
+            for (auto i : itr)
+            {
+                sum += i;
             }
         }
         return sum;

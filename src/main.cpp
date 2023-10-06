@@ -11,8 +11,13 @@ int main()
     std::vector<std::vector<bool>> t = {
         {1, 0, 1, 0, 1, 1, 0},
         {1, 0, 0, 0, 1, 1, 0},
-        {1, 0, 0, 0, 0, 1, 0},
-        {1, 0, 1, 0, 1, 1, 0},
+        {1, 0, 1, 0, 0, 1, 1},
+        {1, 0, 1, 0, 0, 1, 0},
+        {1, 0, 1, 0, 0, 1, 0},
+        {1, 0, 1, 0, 0, 1, 1},
+        {1, 0, 1, 0, 0, 1, 1},
+        {1, 0, 1, 0, 1, 1, 1},
+        {1, 0, 1, 0, 1, 1, 1},
     };
     std::vector<bool> word = {1, 1, 1,1,0,1,1};
     Code c(t, word);
@@ -41,9 +46,10 @@ int main()
 
         ImGui::SFML::Update(win.window, deltaClock.restart());
 
-        myApp::RenderUI(c);
+        
 
         win.window.clear();
+        myApp::RenderUI(win);
         ImGui::SFML::Render(win.window);
 
         for (auto &itr : win.shapeC)
@@ -54,11 +60,11 @@ int main()
         {
             win.window.draw(itr);
         }
-
+        win.updateShapes();
         win.window.draw(win.line);
         win.window.display();
     }
-
+    
     ImGui::SFML::Shutdown();
 
     return 0;
