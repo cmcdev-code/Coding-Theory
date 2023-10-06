@@ -91,9 +91,17 @@ bool ShuntingYard(std::string str, int s, int u)
             numbers.push(std::stoi(numString));
         }
 
-        if (type(result[i]) == 11 && i + 1 < result.size() && type(result[i + 1] >= 0 && type(result[i + 1] <= 9)))
+        if (type(result[i]) == 11 && i + 1 < result.size() && isdigit(result[i + 1]))
         {
-            numbers.push(-1 * type(result[i + 1]));
+            std::string numString = "";
+            while (i+1 < result.size() && isdigit(result[i+1]))
+            {
+                numString += (std::to_string(type(result[i])));
+                i += 1;
+            }
+            int a = std::stoi(numString);
+            a*=-1;
+            numbers.push(a);
             i += 1;
         }
 
