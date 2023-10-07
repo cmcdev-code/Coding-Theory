@@ -19,6 +19,12 @@ public:
     float squareShapeAlignment;
     float offset;
 
+    sf::Color colorOfCircleTrue;
+    sf::Color colorOfCircleFalse;
+    sf::Color colorOfSquareTrue;
+    sf::Color colorOfSquareFalse;
+    sf::Color backgroundColor;
+
     std::vector<sf::RectangleShape> shapeR;
     std::vector<sf::CircleShape> shapeC;
 
@@ -31,6 +37,12 @@ public:
         this->circleShapeAlignment = 20.0f;
         this->spacing = 3;
         this->offset = 30;
+        this->colorOfCircleFalse = sf::Color::Red;
+        this->colorOfCircleTrue = sf::Color::Green;
+        this->colorOfSquareTrue = sf::Color::Yellow;
+        this->colorOfSquareFalse = sf::Color::Blue;
+        this->backgroundColor= sf::Color(45,54,59);
+
     }
     float getOffset() const
     {
@@ -70,15 +82,28 @@ public:
         this->line.setPrimitiveType(sf::Lines);
     }
 
-    SfWindow(Code &code, int shapeDimensions = 20, float shapeAliment = 20.0f, int spacing = 3, int offset = 30)
+    SfWindow(Code &code, int shapeDimensions = 20,
+             float shapeAliment = 20.0f,
+             int spacing = 3,
+             int offset = 30,
+             sf::Color colorOfCircleFalse = sf::Color::Red,
+             sf::Color colorOfCircleTrue = sf::Color::Green,
+             sf::Color colorOfSquareTrue = sf::Color::Yellow,
+             sf::Color colorOfSquareFalse = sf::Color::Blue,
+             sf::Color backgroundColor = sf::Color(45, 54, 59))
     {
-        this->window.create(sf::VideoMode(1280, 720), "Iterative Decoding");
+        this->window.create(sf::VideoMode(1280, 800), "Iterative Decoding");
         this->code = code;
         this->shapeDimensions = shapeDimensions;
         this->circleShapeAlignment = circleShapeAlignment;
         this->line.setPrimitiveType(sf::Lines);
         this->spacing = spacing;
         this->offset = offset;
+        this->colorOfCircleFalse = sf::Color::Red;
+        this->colorOfCircleTrue = sf::Color::Green;
+        this->colorOfSquareTrue = sf::Color::Yellow;
+        this->colorOfSquareFalse = sf::Color::Blue;
+        this->backgroundColor=backgroundColor;
     }
     float getSpacing() const
     {
@@ -99,7 +124,7 @@ public:
         {
             sf::CircleShape shape(this->getShapeDim() / 2);
             shape.setPosition(sf::Vector2f(this->getCircleShapeAlignment(), this->getShapeDim() * this->getSpacing() * i + this->getOffset()));
-            shape.setFillColor(word.at(i) ? sf::Color::Green : sf::Color::Red);
+            shape.setFillColor(word.at(i) ? this->colorOfCircleTrue : this->colorOfCircleFalse);
             this->shapeC.push_back(shape);
         }
 
@@ -108,7 +133,7 @@ public:
         {
             sf::RectangleShape shape(sf::Vector2f(this->getShapeDim(), this->getShapeDim()));
             shape.setPosition(sf::Vector2f(this->getSquareShapeAlignment(), this->getShapeDim() * this->getSpacing() * i + this->getOffset()));
-            shape.setFillColor(!stateOfCheckNodes.at(i) ? sf::Color::Blue : sf::Color::Yellow);
+            shape.setFillColor(!stateOfCheckNodes.at(i) ? this->colorOfSquareFalse : this->colorOfSquareTrue);
             shapeR.push_back(shape);
         }
 
@@ -124,22 +149,31 @@ public:
             }
         }
     }
+    void updateShapesColor()
+    {
+        std::vector<bool> word = this->code.getWord();
+        for (int i = 0; i < word.size(); i++)
+        {
+            // this->shapeC.at(i).setFillColor()
+        }
+    }
 
     void updateShapes()
     {
 
         std::vector<bool> word = this->code.getWord();
         for (int i = 0; i < word.size(); i++)
-        {
-            this->shapeC.at(i).setFillColor(word.at(i) ? sf::Color::Green : sf::Color::Red);
+        {   
+            
+            this->shapeC.at(i).setFillColor(word.at(i) ? this->colorOfCircleTrue : this->colorOfCircleFalse);
             this->shapeC.at(i).setPosition(sf::Vector2f(this->getCircleShapeAlignment(), this->getShapeDim() * this->getSpacing() * i + this->getOffset()));
             this->shapeC.at(i).setRadius(this->getShapeDim() / 2);
         }
 
         std::vector<bool> checkNodeStates = this->code.stateOfCheckNodes();
         for (int i = 0; i < checkNodeStates.size(); i++)
-        {
-            this->shapeR.at(i).setFillColor(!checkNodeStates.at(i) ? sf::Color::Blue : sf::Color::Yellow);
+        {   
+            this->shapeR.at(i).setFillColor(!checkNodeStates.at(i) ? this->colorOfSquareFalse : this->colorOfSquareTrue);
             this->shapeR.at(i).setPosition(sf::Vector2f(this->getSquareShapeAlignment(), this->getShapeDim() * this->getSpacing() * i + this->getOffset()));
             this->shapeR.at(i).setSize(sf::Vector2f(this->getShapeDim(), this->getShapeDim()));
         }

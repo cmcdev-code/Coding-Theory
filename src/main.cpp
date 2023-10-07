@@ -48,7 +48,7 @@ int main()
 
         
 
-        win.window.clear();
+        win.window.clear(win.backgroundColor);
         myApp::RenderUI(win);
         ImGui::SFML::Render(win.window);
 

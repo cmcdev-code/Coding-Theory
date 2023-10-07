@@ -1,13 +1,13 @@
 # ninja log v5
 664	3635	7183146014565666	_deps/sfml-build/src/SFML/Window/CMakeFiles/sfml-window.dir/GlContext.cpp.obj	2acd1e0a5cc4cbca
-20	938	7183327311993365	src/CMakeFiles/example_exe.dir/main.cpp.obj	ce2398fd1a2aee73
+21	966	7183459329225561	src/CMakeFiles/example_exe.dir/main.cpp.obj	ce2398fd1a2aee73
 748	1685	7183145994932823	_deps/sfml-build/src/SFML/Window/CMakeFiles/sfml-window.dir/Mouse.cpp.obj	99f81eb174026de6
 61	304	7183145981546484	_deps/sfml-build/src/SFML/System/CMakeFiles/sfml-system.dir/Time.cpp.obj	b4121b4b60b2ca00
 39	501	7183235588924541	_deps/sfml-build/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/CircleShape.cpp.obj	2896672b3f0f7dff
 2179	5083	7183146028618735	_deps/sfml-build/src/SFML/Window/CMakeFiles/sfml-window.dir/Win32/WindowImplWin32.cpp.obj	6ae03b02174b9506
 66	670	7183145984786886	_deps/sfml-build/src/SFML/System/CMakeFiles/sfml-system.dir/FileInputStream.cpp.obj	e6818de25fba6463
 270	662	7183145984003710	_deps/sfml-build/src/SFML/Window/CMakeFiles/sfml-window.dir/Context.cpp.obj	7af9dafd706a28ef
-939	1355	7183327316094755	src/example_exe.exe	34dbb8fcf93ac47
+967	1381	7183459333317818	src/example_exe.exe	34dbb8fcf93ac47
 1092	1924	7183145996918582	_deps/sfml-build/src/SFML/Window/CMakeFiles/sfml-window.dir/SensorManager.cpp.obj	ebd4c5c93fdbe4fb
 43	269	7183145980825121	_deps/sfml-build/src/SFML/System/CMakeFiles/sfml-system.dir/Sleep.cpp.obj	b52e65cfda179c3
 33	676	7183145985098306	_deps/sfml-build/src/SFML/System/CMakeFiles/sfml-system.dir/Err.cpp.obj	a1a800997179e29
@@ -79,11 +79,11 @@
 21	256	7183236132947686	_deps/sfml-build/lib/libsfml-graphics.a	3df6b6caf2749489
 38	349	7183151424094611	_deps/imgui-sfml-build/CMakeFiles/ImGui-SFML.dir/__/imgui-src/misc/cpp/imgui_stdlib.cpp.obj	cc6fc5f594338d8b
 31	675	7183151427346605	_deps/imgui-sfml-build/CMakeFiles/ImGui-SFML.dir/__/imgui-src/imgui_tables.cpp.obj	cf83fd7bbc001931
-20	762	7183323900305032	_deps/imgui-sfml-build/CMakeFiles/ImGui-SFML.dir/__/imgui-src/imgui_demo.cpp.obj	c349171eced4e269
+22	756	7183411851250105	_deps/imgui-sfml-build/CMakeFiles/ImGui-SFML.dir/__/imgui-src/imgui_demo.cpp.obj	c349171eced4e269
 27	1026	7183151430853683	_deps/imgui-sfml-build/CMakeFiles/ImGui-SFML.dir/__/imgui-src/imgui_draw.cpp.obj	adce22ff6732c2de
 34	1189	7183151432488509	_deps/imgui-sfml-build/CMakeFiles/ImGui-SFML.dir/__/imgui-src/imgui_widgets.cpp.obj	fa2da296d30089c3
 76	2052	7183235604475285	_deps/imgui-sfml-build/CMakeFiles/ImGui-SFML.dir/imgui-SFML.cpp.obj	bd068482e4831c72
 24	1849	7183151439090167	_deps/imgui-sfml-build/CMakeFiles/ImGui-SFML.dir/__/imgui-src/imgui.cpp.obj	bfd728dcbced7d10
-763	971	7183323902387190	_deps/imgui-sfml-build/libImGui-SFML.a	f2dd8a4740082110
-21	945	7183328300490948	src/CMakeFiles/example_exe.dir/main.cpp.obj	ce2398fd1a2aee73
-945	1365	7183328304602848	src/example_exe.exe	34dbb8fcf93ac47
+757	956	7183411853256237	_deps/imgui-sfml-build/libImGui-SFML.a	f2dd8a4740082110
+21	962	7183462092851735	src/CMakeFiles/example_exe.dir/main.cpp.obj	ce2398fd1a2aee73
+962	1382	7183462096980066	src/example_exe.exe	34dbb8fcf93ac47
