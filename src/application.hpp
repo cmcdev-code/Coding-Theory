@@ -23,8 +23,11 @@ namespace myApp
         }
     }
 
+
+
     void RenderUI(SfWindow &win)
     {
+        
         ImGui::Begin("Options");
 
         char inputBuffer[256];
@@ -78,11 +81,10 @@ namespace myApp
             if (ImGui::TreeNode("Position"))
             {
                 ImGui::DragFloat("Offset Vertical", &win.offset);
-
-                ImGui::DragFloat("Horizontal Alignment Variable Nodes", &win.circleShapeAlignment);
-                ImGui::DragFloat("Horizontal Alignment Check Nodes", &win.squareShapeAlignment);
-                ImGui::DragFloat("Spacing", &win.spacing);
-                ImGui::DragFloat("Shape Dimensions", &win.shapeDimensions);
+                ImGui::DragFloat("Vertical Alignment Variable Nodes", &win.circleShapeAlignment);
+                ImGui::DragFloat("Vertical Alignment Check Nodes", &win.squareShapeAlignment);
+                ImGui::DragFloat("Spacing", &win.spacing, 0.05, 1, 10);
+                ImGui::DragFloat("Shape Dimensions", &win.shapeDimensions, 0.05, 1, 100);
                 ImGui::TreePop();
             }
             if (ImGui::TreeNode("Colors of Nodes"))
@@ -180,6 +182,37 @@ namespace myApp
         }
         // ImGui::ShowDemoWindow();
 
+        ImGui::End();
+
+
+        ImGui::Begin("Stats");
+        if (ImGui::TreeNode("Previous Words"))
+        {
+            std::vector<std::string> previousWords = win.code.getPreviousWordAsString();
+            if (ImGui::BeginTable("PreviousWordsTable", 3))
+            {
+
+                ImGui::TableNextRow();
+                ImGui::TableHeader("Index");
+                ImGui::TableHeader("Word");
+
+                for (size_t i = 0; i < previousWords.size(); i++)
+                {
+                    const std::string &word = previousWords[i];
+
+                    ImGui::TableNextRow();
+
+                    ImGui::TableSetColumnIndex(0);
+                    ImGui::Text("%d", i + 1);
+
+                    ImGui::TableSetColumnIndex(1);
+                    ImGui::Text("%s", word.c_str());
+                }
+
+                ImGui::EndTable();
+            }
+            ImGui::TreePop();
+        }
         ImGui::End();
     }
 

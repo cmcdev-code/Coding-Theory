@@ -12,6 +12,16 @@ static int binaryToInt(std::vector<bool> input)
     }
     return a;
 }
+static std::string binToString(std::vector<bool> input)
+{
+    std::string str = "";
+
+    for (auto itr : input)
+    {
+        str += itr ? "1" : "0";
+    }
+    return str;
+}
 
 #include <stack>
 #include <sstream>
@@ -244,7 +254,7 @@ public:
                 this->word.at(i) = !this->word.at(i);
             }
         }
-
+        this->previousWordString.push_back(binToString(this->word));
         this->previousWord.push_back(binaryToInt(this->word));
     }
 
@@ -334,11 +344,22 @@ public:
         return this->previousWord;
     }
 
+    void setPreviousWordString(std::vector<std::string> &previousWordString)
+    {
+        this->previousWordString = previousWordString;
+    }
+
+    std::vector<std::string> getPreviousWordAsString() const
+    {
+        return this->previousWordString;
+    }
+
     void operator=(const Code &c)
     {
         this->matrix = c.getMatrix();
         this->word = c.getWord();
         this->previousWord = c.getPreviousWord();
+        this->previousWordString = c.getPreviousWordAsString();
     }
 
 private:
@@ -350,4 +371,6 @@ private:
 
     // the representation of the input is a binary number
     std::vector<int> previousWord;
+
+    std::vector<std::string> previousWordString;
 };
